@@ -1,11 +1,4 @@
-# Welcome to our Python playground!
+people = {"Tim": 21, "Joe": 18, "Sarah": 25, "Jennie": 26, "Bill": 34}
 
-digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-try:
-    if len(digits) != 10:
-        raise Exception("There should be exactly 10 digits!")
-except Exception as e:
-    print(e)
-finally:
-    print("Goodbye!")
+for s in people.get():
+    print(s)
