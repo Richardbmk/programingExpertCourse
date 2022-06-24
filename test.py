@@ -1,93 +1,42 @@
-# Welcome to our Python playground!
-
-import io
-
-
-class TranslatorInterface:
-    def translate(self, text):
-        raise NotImplementedError
-
-    def untranslate(self, text):
-        raise NotImplementedError
+import math
+from turtle import circle
 
 
-class SpanishTranslator(TranslatorInterface):
-    def translate(self, text):
-        words = text.split(" ")
-        for i, word in enumerate(words):
-            if word == "hello":
-                words[i] = "hola"
-            elif word == "world":
-                words[i] = "mundo"
-        return " ".join(words)
+class ShapeInterface:
+    def get_area(self):
+        raise NotImplementedError()
 
-    def untranslate(self, text):
-        words = text.split(" ")
-        for i, word in enumerate(words):
-            if word == "hola":
-                words[i] = "hello"
-            elif word == "mundo":
-                words[i] = "world"
-        return " ".join(words)
+    def get_perimeter(self):
+        raise NotImplementedError()
 
 
-class FrenchTranslator(TranslatorInterface):
-    def translate(self, text):
-        words = text.split(" ")
-        for i, word in enumerate(words):
-            if word == "hello":
-                words[i] = "bonjour"
-            elif word == "world":
-                words[i] = "monde"
-        return " ".join(words)
+# Write your code here.
+class Square(ShapeInterface):
+    def __init__(self, side_length):
+        self.side_length = side_length
 
-    def untranslate(self, text):
-        words = text.split(" ")
-        for i, word in enumerate(words):
-            if word == "bonjour":
-                words[i] = "hello"
-            elif word == "monde":
-                words[i] = "world"
-        return " ".join(words)
+    def get_area(self):
+        return self.side_length * self.side_length
+
+    def get_perimeter(self):
+        return self.side_length * 4
 
 
-TRANSLATORS = {
-    "spanish": SpanishTranslator(),
-    "french": FrenchTranslator(),
-}
+class Circle(ShapeInterface):
+    def __init__(self, radius):
+        self.radius = radius
 
-# In order to check that the translator works correctly, we first
-# translate "hello world" into that language, and then re-translate
-# the result. At the end, we should be getting "hello world" back.
-def check_translator_accuracy(language):
-    translator = TRANSLATORS[language]
+    def get_area(self):
+        area = round(math.pi * (self.radius ** 2), 2)
+        return area
 
-    original_text = "hello world"
-    translated = translator.translate(original_text)
-    new_text = translator.untranslate(translated)
+    def get_perimeter(self):
+        perimeter = round(2 * math.pi * self.radius, 2)
+        return perimeter
 
-    if original_text != new_text:
-        raise Exception(f"Translator {language} does not work correctly!")
+square = Square(2)
+square.get_area()
 
-    print(f"The {language} translator is correct!")
-
-
-# check_translator_accuracy("spanish")
-# check_translator_accuracy("french")
-
-# Sample Code 01
-
-class RunCodeInterface:
-    def compile_code(self):
-        raise NotImplementedError("You must implement compile_code()")
-
-    def execute_code(self):
-        raise NotImplementedError("You must implement execute_code()")
-
-
-class GoCode(RunCodeInterface):
-    def compile_code(self):
-        print("Compile Go code")
-
-    def execute_code(self):
-        print("Execute Go code")
+circle = Circle(3)
+circle.get_area()
+circle.get_perimeter()
