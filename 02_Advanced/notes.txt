@@ -1,0 +1,13 @@
+# 1- Modules and Packages
+
+## Concepts to understand
+- Circular import 
+- Main Module
+- Module
+- Packages
+- absolute imports
+- relative imports
+
+# 2 Files
+
+
