@@ -1,0 +1,32 @@
+# Usefull linux commands
+
+- find . -name sample.py
+
+- head sample.py
+- head -n 3 sample.py
+
+- tail sample.py
+- tail -n 3 sample.py
+
+- grep "e" sample.py
+
+- ls | grep ".txt"
+
+- ctrl + R
+
+- find . -regex "*"
+- find . -regex "."
+- find . -regex ".."
+- find . -regex "..."
+- find . -regex "..\."
+- find . -regex ".*"
+- find . -regex ".*\.txt"
+- find . -regex ".*\..*"
+- find . -regex "\./.*\..*"
+- find . -regex ".*a.*"
+- find . -regex ".*a..*"
+- find . -regex ".*[bc].*"
+- find . -regex ".*[bc][ab].*"
+
+- cat sample.py | grep "p"
+- cat sample.py | grep ".."

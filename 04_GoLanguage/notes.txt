@@ -1,0 +1,4 @@
+# Basic command
+- go run 04_GoLanguage/introduction.go 
+- go build 04_GoLanguage/introduction.go 
+- ./introduction.exe 
