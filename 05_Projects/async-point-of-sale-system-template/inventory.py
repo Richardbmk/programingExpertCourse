@@ -1,12 +1,10 @@
 import asyncio
 import random
 
-
 class Inventory:
     '''
     DO NOT MODIFY THIS CLASS
     '''
-
     def __init__(self):
         self.catalogue = {
             "Burgers": [
@@ -47,8 +45,7 @@ class Inventory:
             }
         }
         self._generate_item_lookup_dict()
-        self.stock = {i + 1: random.randint(0, 15)
-                      for i in range(len(self.items))}
+        self.stock = {i + 1: random.randint(0, 15) for i in range(len(self.items))}
 
     def _generate_item_lookup_dict(self):
         self.items = {}
@@ -73,12 +70,11 @@ class Inventory:
         async def wrapper(self, item_id):
             if item_id not in self.stock:
                 raise ValueError(
-                    f"No item with id: {item_id} exists in the inventory.")
+                    f"No item with id: {item_id} exists in the inventory."
+                )
 
             result = await func(self, item_id)
             return result
-
-        return wrapper
 
     async def get_number_of_items(self):
         await asyncio.sleep(1)
@@ -92,15 +88,15 @@ class Inventory:
     async def get_stock(self, item_id):
         await asyncio.sleep(2)
         if item_id not in self.stock:
-            raise ValueError(
-                f"No item with id: {item_id} exists in the inventory.")
+            raise ValueError(f"No item with id: {item_id} exists in the inventory.")
         return self.stock[item_id]
 
     @_verify_item_id
     async def decrement_stock(self, item_id):
         if item_id not in self.stock:
             raise ValueError(
-                f"No item with id: {item_id} exists in the inventory.")
+                f"No item with id: {item_id} exists in the inventory."
+            )
 
         if self.stock[item_id] == 0:
             return False
